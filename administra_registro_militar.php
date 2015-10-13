@@ -56,6 +56,24 @@
 											</tr>								
 										</table>
 										<div id="a"></div>
+										<table class="table table-hover" id="tb_1">
+											<tr>
+												<td bgcolor="#dff0d8">
+													<label for="login"><font >Novo Login</font></label>
+												</td>
+												<td bgcolor="#dff0d8">
+													<input class="form-control" type="text" name="login" placeholder="Login" required>
+												</td>
+											</tr>
+											<tr>
+												<td bgcolor="#dff0d8">
+													<label for="password"><font >Novo Password</font></label>
+												</td>
+												<td bgcolor="#dff0d8">
+													<input class="form-control" type="text" name="password" placeholder="Password" required>
+												</td>
+											</tr>
+										</table>
 									</div>
 
 								</div>
