@@ -1,12 +1,13 @@
-<html>
+<html lang="pt-br">
 <head> 
 	<title> Registro_militar </title> 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="dist/css/bootstrap-select.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="dist/js/bootstrap-select.js"></script>
-  <meta charset="utf-8">
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="boostrap-select/css/bootstrap-select.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="boostrap-select/js/bootstrap-select.js"></script>
+  <meta charset="utf-8" />
 </head>
 <body class="container">
 
@@ -24,12 +25,10 @@
     echo '<div class="alert alert-success" align="center">
       <span class="glyphicon glyphicon-ok"></span>
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <h3><font color="black"> Registro </font></h3>
-      <h4><font color="black"> Gravado Com Sucesso </font></h4>
+      <h4><font color="black"> Registrado com Sucesso </font></h4>
     </div>';
 }
 ?>
-
 
   <form class="form-inline" role="form" action="enviar_registro.php" method="post"> 
 
@@ -60,12 +59,12 @@
                 <option value="Ten Cel">Ten Cel</option>
                 <option value="Major">Major</option>
                 <option value="Cap">Cap</option>
-                <option value="1° Ten">1° Ten</option>
-                <option value="2° Ten">2° Ten</option>
+                <option value="1 Ten">1° Ten</option>
+                <option value="2 Ten">2° Ten</option>
                 <option value="Sub Ten">Sub Ten</option>
-                <option value="1° Sgt">1° Sgt</option>
-                <option value="2° Sgt">2° Sgt</option>
-                <option value="3° Sgt">3° Sgt</option>
+                <option value="1 Sgt">1° Sgt</option>
+                <option value="2 Sgt">2° Sgt</option>
+                <option value="3 Sgt">3° Sgt</option>
                 <option value="Cabo">Cabo</option>
                 <option value="Sd Ep">Sd Ep</option>
                 <option value="Sd Ev">Sd Ev</option>
@@ -83,12 +82,12 @@
 
             <select class="selectpicker show-tick" data-style="btn-primary" name="local" required>
                 <option value="">Local</option>
-                <option value="Cel">CMO</option>
-                <option value="Ten Cel">9° RM</option>
-                <option value="Major">B ADM AP / CMO</option>
-                <option value="Cap">6CTA</option>
-                <option value="1° Ten">9° BCOM</option>
-                <option value="2° Ten">9° CIA GD</option>
+                <option value="CMO">CMO</option>
+                <option value="9 RM">9° RM</option>
+                <option value="B ADM AP / CMO">B ADM AP / CMO</option>
+                <option value="6CTA">6CTA</option>
+                <option value="9 BCOM">9° BCOM</option>
+                <option value="CIA GD">9° CIA GD</option>
             </select>
 
           </td>
@@ -102,7 +101,8 @@
           </td>
           <td align="left">
             <input class="form-control" type="text" name="dd"  size="2" maxlength="2" placeholder="DD" pattern="[0-9]{2}" required>
-            <input for="ctt" class="form-control" type="text" name="ctt" maxlength="9" placeholder="0-0000-0000" pattern="[0-9]{9}" required>
+            <input for="ctt" class="form-control" type="text" name="ctt" maxlength="4" placeholder="0000" pattern="[0-9]{4}" size="4" required>
+            <input for="ctt_final" class="form-control" type="text" name="ctt_final" maxlength="5" placeholder="00000" pattern="[0-9]{5}" size="5" required>
           </td>
         </tr>
 
@@ -306,7 +306,7 @@
             </td>
           </tr>
       </table>
-      <form role="form" action="confirma_usuario.php">
+      <form role="form" action="index.php">
         <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-repeat"></span>  Novo Login </button>
       </form>
     </fieldset> 

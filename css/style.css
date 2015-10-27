@@ -10,3 +10,46 @@
 table #tb_1{
 	border:1px solid black;
 }
+.nomecompleto{
+	width: 100%;
+	text-align: left;
+}
+
+.cabecalho {
+	font-weight: bold;
+	background-color: #669900; 
+	color: white;
+}
+
+.cabecalhoAlt {
+	font-weight: bold;
+	background-color: #66CCFF; 
+	color: white;
+}
+
+.cabecalhoColor {
+	font-weight: bold;
+	background-color: /*#FF9900*/ #EBEBE0; 
+	color: black;
+}
+
+.nomecompleto td{
+	width: 20%;
+	text-align: left;
+
+}
+
+.font_hover:hover {
+	color: #0099FF;
+}
+
+.tamBotton {
+	height: 50px;
+	width: 180px;
+
+}
+
+.localizacaoBotton {
+	height: 8%;
+	width: 8%;
+}
