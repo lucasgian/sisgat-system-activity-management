@@ -27,6 +27,12 @@ table #tb_1{
 	color: white;
 }
 
+.cabecalhoListas {
+	font-weight: bold;
+	background-color: #0099FF;
+	color: white;
+}
+
 .cabecalhoColor {
 	font-weight: bold;
 	background-color: /*#FF9900*/ #EBEBE0; 

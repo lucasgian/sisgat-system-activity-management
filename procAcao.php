@@ -12,6 +12,7 @@ echo "<div> <meta name='viewport' content='width=device-width, initial-scale=1'>
 <script src='js/bootstrap.min.js'></script>
 <script src='boostrap-select/js/bootstrap-select.js'></script>
 <script src='js/modal.js'></script>
+<script src='js/validaform.js'></script>
 <script src='js/confirm_password.js'></script>
 <meta charset='utf-8' />";
 
@@ -145,48 +146,49 @@ if(isset($_POST['btnAtualiza'])||!empty($_POST['btnAtualiza'])) {
 			
 
 
-			echo "<button type='button' class='btn btn-danger btn' data-toggle='modal' data-target='#myModal'>NOVA SENHA</button>
+			echo "<button type='button' class='btn btn-info btn' data-toggle='modal' data-target='#myModal'>NOVA SENHA</button>
 
 			<!-- Modal -->
 			<div class='modal fade' id='myModal' role='dialog'>
-			<div class='modal-dialog'>
+				<div class='modal-dialog'>
 
-			<!-- Modal content-->
-			<div class='modal-content'>
-			<div class='modal-header'>
-			<button type='button' class='close' data-dismiss='modal'>Fechar</button>
-			<h2 class='modal-title' align='center'><font color='#B80000'>Alteração de Senha</font></h2>
-			</div>
-			<div class='modal-body'>
-
-
-			<form class='pure-form' action='alterar_banco.php' method='post'> 
-			<fieldset>
-			<legend align='center'>Informe Nova Senha e Confirme</legend>
-			<table class='table'>
-			<tr>
-			<td>
-			<div align='right'> <input type='password'  placeholder='Senha' name='senha' id='password' autofocus required> </div>
-			</td>
-			<td>
-			<div align='left'> <input type='password'  placeholder='Confirmar Senha' name='confirmaSenha' id='confirm_password' autofocus required> </div>
-			</td>
-			</table>
+					<!-- Modal content-->
+					<div class='modal-content'>
+						<div class='modal-header'>
+							<button type='button' class='close' data-dismiss='modal'>Fechar</button>
+							<h2 class='modal-title' align='center'><font color='#B80000'>Alteração de Senha</font></h2>
+						</div>
+						<div class='modal-body'>
 
 
-			<script src='js/confirm_password.js'></script>
-			</fieldset>
+							<form class='pure-form' name='confirma' action='alterar_banco.php'onsubmit='return validatePassword()' method='post'> 
+								<fieldset>
+									<legend align='center'>Informe Nova Senha e Confirme</legend>
+									<table class='table'>
+										<tr>
+											<td>
+												<div align='right'> <input type='password' value='' placeholder='Senha' name='password' id='password' autofocus > </div>
+											</td>
+											<td>
+												<div align='left'> <input type='password'  placeholder='Confirmar Senha' name='confirmaSenha' id='confirm_password' autofocus > </div>
+											</td>
+										</tr>
+									</table>
+									<div align='center'> <button class='btn btn-warning' type='submit'> Confirmar </button> </div>
 
-			</form> 
+									<script src='js/confirm_password.js'></script>
+								</fieldset>
+
+							</form> 
 
 
-			<!-- <p>Informe Nova Senha</p> -->
+					<!-- <p>Informe Nova Senha</p> -->
 
-			</div>
-			<div class='modal-footer'>
-			<!-- <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button> -->
-			</div>
-			</div>
+						</div>
+						<div class='modal-footer'>
+					<!-- <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button> -->
+					</div>
+				</div>
 
 			</div>
 			</div>";
@@ -197,7 +199,7 @@ if(isset($_POST['btnAtualiza'])||!empty($_POST['btnAtualiza'])) {
 			echo "<fieldset>";
 			echo "<div align='center'>";
 			//echo "<button class='btn btn-primary' type='button' id=''>ALTERAR</button>";
-			echo "<div align='center' ><button type='submit' class='pure-button pure-button-primary tamBotton' value='$id_militar' name='idMilitar' id='$id_militar'><h3>Confirmar</h3></button> </div>";
+			echo "<div align='center' ><button type='submit' class='pure-button pure-button-success tamBotton' value='$id_militar' name='idMilitar' id='$id_militar'> <h3> <b>Alterar </h3> </button> </div>";
 			echo "</form>";
 
 			echo "</div>";

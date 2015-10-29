@@ -13,11 +13,7 @@
 
 <?php
   if(empty($_GET["enviado"])) {
-    /*echo '<div class="alter alert-danger">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Erro!</strong> Não Houve Exito.
-          </div>
-    ';*/
+   
     }
   
 
@@ -28,10 +24,10 @@
       <h4><font color="black"> Registrado com Sucesso </font></h4>
     </div>';
 }
+
+$login = $_GET["login"];
+  echo "<form class='form-inline' role='form' action='enviar_registro.php?login=$login' method='post'>";
 ?>
-
-  <form class="form-inline" role="form" action="enviar_registro.php" method="post"> 
-
     <fieldset>
       <legend>Registro_Militar</legend>
   
@@ -257,7 +253,12 @@
           </td>
         </tr>
           <nav class="navbar navbar-inverse">
-        
+             <?php
+                $login = $_GET["login"];
+                echo "<h3><font color='white'>&nbsp;  Longin $login</font></h3>";
+
+                echo "<div name='login' value='$login' type='submit'>";
+             ?>
           </nav>
           <tr>
             <td colspan="2" align="center">
@@ -289,6 +290,7 @@
                         <div class="form-group">
                          <label> Confirmação de Registro Transfere a Responsabilidade Para Usuario !</label>
                         </div>
+
 
                         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Sim</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>

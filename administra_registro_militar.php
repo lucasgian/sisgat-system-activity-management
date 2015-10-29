@@ -105,7 +105,7 @@
 														</td>
 													</tr>
 												</table>
-												<button class="btn btn-group-justified btn-success" name="btnGravar" type="submit">Cadastrar</button>
+												<button class="btn btn-group-justified btn-success" name="btnGravar" type="submit"> <h3> Cadastrar </h3></button>
 										</form>
 									</div>
 
@@ -113,6 +113,7 @@
 							</div>
 						</div>
 					</td>
+					
 
 
 
@@ -138,28 +139,28 @@
 
 											if ($result->num_rows > 0) {
 											    // output data of each row
-												echo "<table class='table'>";
-												echo "<tr class='nomecompleto cabecalho'>";
+												echo "<table class='table'>
+												<tr class='nomecompleto cabecalho'>
 
-												echo "<td>";
-												echo "Nome"; 
-												echo "</td>";
+												<td>
+												Nome
+												</td>
 
-												echo "<td>";
-												echo "Posto / G"; 
-												echo "</td>";
+												<td>
+												Posto / G
+												</td>
 
-												echo "<td>";
-												echo "Login"; 
-												echo "</td>";
+												<td>
+												Login
+												</td>
 
-												echo "<td>";
-												echo "Local"; 
-												echo "</td>";
+												<td>
+												Local
+												</td>
 
-												echo "<td>";
-												echo "Ação";
-												echo "</td>";
+												<td>
+												Ação
+												</td>";
 
 
 												echo "</tr>";
@@ -331,7 +332,116 @@
 					<td align="center">
 						<label for="lista_usuario"><font color="black" >Listar Militares Cadastrados</font></label>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 						<!-- Listar usuario militar cadastrados (Todos) -->
-						<button class="btn btn-group-justified btn-info" type="button"><font color="white" ><b>Listar Militares</b></font></button>
+						<button class="btn btn-group-justified btn-info" type="button" id="listarMil"><font color="white" ><b>Listar Militares</b></font></button>
+						<div class="modal fade" id="myModalMil" role="dialog">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" style="padding: 20px 50px;">
+										<button class="close" type="button" data-dismiss="modal">Fechar</button>
+										<h3>Listar Militares</h3>
+									</div>
+
+									<div class="modal-body" style="padding: 50px 0px;">
+										<?php
+											
+												include ("connect.php");
+
+											$sql = "SELECT id, nome_completo, login, posto, local, permissao FROM militar_registrado order by nome_completo"; 
+											$result = $conn->query($sql);
+
+											/*$sql_2 = "SELECT login FROM registros WHERE login = '".$login."' ";
+											$result_2 = $conn->query($sql_2);*/
+
+											if($result->num_rows > 0) {
+												echo "<table class='table'>";
+												echo "<tr class='nomecompleto cabecalhoListas'>";
+
+												echo "<td>";
+												echo "Nome";
+												echo "</td>";
+												
+												echo "<td>";
+												echo "Posto / G";
+												echo "</td>";
+
+												echo "<td>";
+												echo "Login";
+												echo "</td>";
+
+												echo "<td>";
+												echo "Local";
+												echo "</td>";
+
+												echo "<td>";
+												echo "N° Registros";
+												echo "</td>";
+
+												echo "</tr>";
+
+
+												
+												
+
+												while($row = $result->fetch_assoc()) {
+
+													$login = $row["login"];
+													$nome_completo = $row["nome_completo"];
+													$posto = $row["posto"];
+													$local = $row["local"];
+													$permissao = $row["permissao"];
+													$id = $row["id"];
+
+
+													$sql_2 = "SELECT login FROM registros WHERE login = '".$login."' ";
+													$result_2 = $conn->query($sql_2);
+
+
+													$numero_registros = 0;
+
+													while($row = $result_2->fetch_assoc()) {
+														//$login = $row["login"];
+														$numero_registros++;
+													}
+
+													if($permissao != "adm") {
+														
+														echo "<form class='form-inline' role='form' action='procAcao.php' method='post'>";
+														echo "<table class='table table-hover'>";
+														echo "<tr class='nomecompleto'>";
+
+														echo "<td class='nome'>";
+														echo "<b> $nome_completo";
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $posto;
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $login;
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $local;
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $numero_registros;
+														echo "</td>";
+
+														echo "</tr>";
+														echo "</form>";
+														echo "</table>";
+													}
+												}
+											}
+								
+										?>
+
+									</div>
+								</div>
+							</div>
+						</div>
 
 					</td>
 				</tr>
@@ -349,7 +459,109 @@
 					<td align="center">
 						<label for="listar_todos_registros"><font color="black" >Listar Todos Os Registros</font></label>
 						<!-- Listar registros cadastrados (Todos) -->
-						<button class="btn btn-group-justified btn-info" type="button"><font color="white"><b>Listar Todos Os Registros</b></font></button>
+						<button class="btn btn-group-justified btn-info" id="listarReg" type="button"><font color="white"><b>Listar Todos Os Registros</b></font></button>
+						<div class="modal fade" id="myModalReg" role="dialog">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" style="padding: 20px 50px;">
+										<button class="close" type="button" data-dismiss="modal">Fechar</button>
+										<h3>Listar Registros</h3>
+									</div>
+
+									<div class="modal-body" style="padding: 50px 0px;">
+										<?php
+											include ("connect.php");
+
+											$sql = "SELECT login, nome, dd, ctt, atividade, dia_saida, mes_saida, ano_saida, dia_retorno, mes_retorno, ano_retorno FROM registros";
+											$result = $conn->query($sql); 
+
+											if($result->num_rows > 0) {
+												$login = $row["login"];
+												$nome = $row["nome"];
+												$dd = $row["dd"];
+												$ctt = $row["ctt"];
+												$atividade = $row["atividade"];
+												$dia_saida = $row["dia_saida"];
+												$mes_saida = $row["mes_saida"];
+												$ano_saida = $row["ano_saida"];
+												$dia_retorno = $row["dia_retorno"];
+												$mes_retorno = $row["mes_retorno"];
+												$ano_retorno = $row["ano_retorno"];
+
+												//$ctt = $dd. "-". $ctt;
+												echo $login;
+
+												echo "<table class='table'>";
+												echo "<tr class='nomecompleto cabecalhoListas'>";
+
+												echo "<td>";
+												echo "Nome";
+												echo "</td>";
+												
+												echo "<td>";
+												echo "Login";
+												echo "</td>";
+
+												echo "<td>";
+												echo "Telefone";
+												echo "</td>";
+
+												echo "<td>";
+												echo "Atividade";
+												echo "</td>";
+
+												echo "<td>";
+												echo "Dia de Saída";
+												echo "</td>";
+
+												echo "</tr>";
+
+
+												while($row = $result->fetch_assoc()) {
+
+													
+														echo "<table class='table table-hover'>";
+														echo "<tr class='nomecompleto'>";
+
+														echo "<td class='nome'>";
+														echo "<b> $nome";
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $login;
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $ctt;
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $atividade;
+														echo "</td>";
+
+														echo "<td class='name'>";
+														echo $dia_saida;
+														echo "</td>";
+
+														echo "</tr>";
+														echo "</table>";
+
+
+
+												}
+
+
+											}
+
+										?>
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</td>
 				</tr>
 				<tr>

@@ -9,5 +9,10 @@ $(document).ready(function(){
 	 $("#altCadastro").click(function() {
 	 		$("#myModalAlt").modal();
 	 	});
-
-	});
+	 $("#listarMil").click(function() {
+	 		$("#myModalMil").modal();
+	 });
+	 $("#listarReg").click(function() {
+	 		$("#myModalReg").modal();
+	 });
+});

@@ -36,7 +36,7 @@ if(mysqli_num_rows($registro_militares)){
 				$correto_login = 1;
 			}
 			else{
-				header("location:registro_usuario_militar.php");
+				header("location:registro_usuario_militar.php?login=$login");
 				$correto_login = 1;
 			}
 		}

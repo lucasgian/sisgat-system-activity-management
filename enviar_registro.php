@@ -24,6 +24,7 @@ if($conn->connect_error){
 
 include ("connect.php");
 
+$login = $_GET["login"];
 $nome = $_POST["nome"];
 $posto = $_POST["posto"];
 $local = $_POST["local"];
@@ -38,10 +39,11 @@ $dia_retorno = $_POST["diaRet"];
 $mes_retorno = $_POST["mesRet"];
 $ano_retorno = $_POST["anoRet"];
 
+
 $ctt = $ctt . $ctt_final;
 
-$sql = 	"INSERT INTO registros (nome, posto, local, dd, ctt, atividade, dia_saida, mes_saida, ano_saida, dia_retorno, mes_retorno, ano_retorno) VALUES 
-('$nome', '$posto', '$local', '$dd', '$ctt', '$atividade', '$dia_saida', '$mes_saida', '$ano_saida', '$dia_retorno', '$mes_retorno', '$ano_retorno')";
+$sql = 	"INSERT INTO registros (login, nome, posto, local, dd, ctt, atividade, dia_saida, mes_saida, ano_saida, dia_retorno, mes_retorno, ano_retorno) VALUES 
+('$login', '$nome', '$posto', '$local', '$dd', '$ctt', '$atividade', '$dia_saida', '$mes_saida', '$ano_saida', '$dia_retorno', '$mes_retorno', '$ano_retorno')";
 
 if ($conn->query($sql) === TRUE) {
 
@@ -49,7 +51,7 @@ if ($conn->query($sql) === TRUE) {
 	 // Invoca um dilog box ao fim do processo 
 	//header("location:registro_usuario_militar.php?enviado=sucesso");
 	//echo $nome;
-	header("location:registro_usuario_militar.php?enviado=sucesso");
+	header("location:registro_usuario_militar.php?login=$login&&enviado=sucesso");
 	//$enviado = "sucesso";
 	//print_r($_POST);
 	//echo "<script>alert('Enviado com sucesso!');history.back();</script>";
